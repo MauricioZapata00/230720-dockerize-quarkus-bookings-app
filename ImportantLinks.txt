@@ -1,0 +1,33 @@
+- https://www.youtube.com/watch?v=BL67jwPYvRs
+- https://hashinteractive.com/blog/docker-compose-up-with-postgres-quick-tips/
+- https://geshan.com.np/blog/2021/12/docker-postgres/
+- https://quarkus.io/extensions/io.quarkus/quarkus-jdbc-postgresql
+- https://quarkus.io/guides/datasource
+- https://es.quarkus.io/guides/reactive-sql-clients
+- https://www.postgresql.org/docs/7.4/jdbc-binary-data.html
+- https://es.quarkus.io/guides/hibernate-orm
+- https://es.quarkus.io/guides/hibernate-reactive
+- https://www.w3docs.com/snippets/java/when-is-the-jsonproperty-property-used-and-what-is-it-used-for.html
+- https://www.mastertheboss.com/soa-cloud/quarkus/getting-started-with-hibernate-reactive/
+- https://www.random.org/geographic-coordinates/
+
+
+-Dquarkus.datasource.db-kind=postgresql -Dquarkus.datasource.username=LocalDeveloper -Dquarkus.datasource.password=G8gbm8gZXN -Dquarkus.datasource.reactive.url=vertx-reactive:postgresql://localhost:5432/LocalDB -Dquarkus.datasource.reactive.max-size=20 -Dquarkus.hibernate-orm.database.generation=update
+
+-----phind.com response:
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=mydatabase
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

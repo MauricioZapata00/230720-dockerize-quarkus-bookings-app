@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15.3-alpine3.18
+    container_name: postgres-15.3-alpine3.18
+    environment:
+      - POSTGRES_USER=LocalDeveloper
+      - POSTGRES_PASSWORD=G8gbm8gZXN
+      - POSTGRES_DB=LocalDB
+    ports:
+      - '5432:5432'
+  application:
+    depends_on: [db]
+    image: quarkus-dummies-project-booking
+    container_name: quarkus-booking
+    environment:
+      - QUARKUS_DATASOURCE_REACTIVE_URL=vertx-reactive:postgresql://db:5432/LocalDB
+      - QUARKUS_DATASOURCE_USERNAME=LocalDeveloper
+      - QUARKUS_DATASOURCE_PASSWORD=G8gbm8gZXN
+      - QUARKUS_HIBERNATE-ORM_DATABASE_GENERATION=update
+    ports:
+      - '8100:8100'
