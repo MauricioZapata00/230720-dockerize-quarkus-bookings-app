@@ -2,13 +2,15 @@
 
 To create the docker image in your local machine you
 need to do the following steps:
+
 * First, at the same high of the project, run the next
 command:
 ```shell script
 ./gradlew build -Dquarkus.package.type=legacy-jar
 ```
-This is for build the container image run before 
-create it
+This is for build the .jar application file before 
+create the container image
+
 * Next we can create the image with the following
 command:
 ```shell script
@@ -76,7 +78,7 @@ the image name for the one you have created.
 
 Here the only difference between the application.properties file of the
 project itself and the container's environment variables is that the *QUARKUS_DATASOURCE_REACTIVE_URL* 
-is connecting to the container running the postgres database. If you try 
+variable is connecting to the container running the postgres database. If you try 
 to connect to the database IP *localhost:5432* you may find an issue like
 [this](https://stackoverflow.com/questions/72138430/i-have-a-java-spring-boot-with-postgresql-within-docker-compose-org-postgresql)
 
